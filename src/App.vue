@@ -1,28 +1,45 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <nav uk-navbar uk-sticky :class="navbarClasses">
+      <div class="uk-navbar-left uk-container">
+        <ul class="uk-navbar-nav">
+          <li class="uk-active"><a href="javascript:void(0)">{{ $store.state.appName }}</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="uk-section">
+      <div class="uk-container">
+        <Home />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import 'uikit/dist/css/uikit.min.css';
+import 'uikit/dist/js/uikit.min.js';
+import Home from './components/Home.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Home
+  },
+  data () {
+    return {
+      navbarClasses: [
+        'uk-navbar-container',
+        'uk-background-primary',
+        'uk-navbar-transparent',
+        'uk-light'
+      ]
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app > .uk-navbar-container .uk-navbar-nav > li > a {
+    min-height: 60px;
+  }
 </style>
